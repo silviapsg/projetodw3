@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block conteudo %}
+<div class="container" style="width: 70%; display: flex;">
+    <div class="imagem" style="width: 60%; height: 100%;">
+        <img style="width: 100%" src="{{ url_for('static', filename='img/img_login.jpg') }}" alt="Imagem Representativa">
+    </div>
+    <div class="form-login" style="width: 40%; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+        <h1 style="text-align: center; font-weight: bold; margin-top: 48px;">Login</h1>
+        <form style="margin: 36px 16px" method="POST" action="/autenticar">
+            <input style="width: 100%; margin-top: 12px;" class="form-control" type="text" name="user" placeholder="Usuário" required>
+            <input style="width: 100%; margin-top: 12px;" class="form-control" type="password" name="password" placeholder="Senha" required>
+            <button style="width: 100%; margin-top: 24px; font-weight: bold; background-color: #CB8471; border: #CB8471;" class="btn btn-primary" type="submit">ENTRAR</button>
+            <p style="text-align: center; font-size: 12px;">Ainda não tem uma conta? <a href="{{ url_for('cadastro') }}" style="font-weight:bold; color:#CB8471; text-decoration: none;">Cadastre-se</a></p>
+            <span style="width: 100%; text-align: center; font-size: 12px;">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %} 
+                    <ul id="messages" class="list-unstyled" style="height: 12px;">
+                    {% for message in messages %}
+                        <li class="alert alert-danger">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            </span>
+        </form>
+    </div>
+</div>
+{% endblock %}

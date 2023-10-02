@@ -1,0 +1,57 @@
+{% extends "template.html" %}
+
+{% block titulo %}Cadastro{% endblock %}
+
+{% block conteudo %}
+<div class="container" style="width: 60%; display: flex; flex-direction: column; align-items: center;">
+    <h1 style="text-align: center; font-weight: bold; margin: 12px;">
+        <img src="{{ url_for('static', filename='img/img_logo.png') }}" alt="Logo" style="width: 80px; vertical-align: middle; margin-right: 10px;">Cadastro
+    </h1>
+    <form style="display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%;" method="POST" action="/cadastrar">
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="nome">Nome completo</label>
+            <input class="form-control" type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="cpf">CPF</label>
+            <input class="form-control" type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="email">E-mail</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="email@exemple.com.br">
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="telefone">Telefone</label>
+            <input class="form-control" type="tel" id="telefone" name="telefone" placeholder="(xx) 99999-9999">
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="endereco">Endereço</label>
+            <input class="form-control" type="text" id="endereco" name="endereco" placeholder="Digite seu endereço">
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="data_nascimento">Data de nascimento</label>
+            <input class="form-control" type="date" id="data_nascimento" name="data_nascimento">
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="usuario">Senha</label>
+            <input class="form-control" type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+        </div>
+        <div style="width: 48%; margin-top: 12px;">
+            <label for="senha">Confirme a senha</label>
+            <input class="form-control" type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme sua senha" required>
+        </div>
+        <button style="width: 100%; margin-top: 36px; font-weight: bold; background-color: #CB8471; border: #CB8471;" class="btn btn-primary" type="submit">CADASTRAR</button>
+        <span style="width: 100%; text-align: center; font-size: 12px; margin-top: 12px;">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %} 
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-danger">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </span>
+    </form>
+</div>
+{% endblock %}
