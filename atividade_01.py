@@ -18,7 +18,9 @@ def cadastro():
 
 @site.route("/autenticar", methods=['POST', ]) 
 def autenticar():
-    senha = request.form['password']
+    senha = request.form['senha']
+    # Não foi feita nenhum armazenamento em Banco de Dados ou similares AINDA. 
+    # A senha só é inválida por causa dos critérios de senha pedidas na atividade.
     if (len(senha) < 6) or (not re.search(r'[A-Z]', senha)) or (not re.search(r'[0-9]', senha)) or (not re.search(r'[!@#$%^&*]', senha)):
         flash('Senha inválida!')
         return redirect('/login')
