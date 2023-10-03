@@ -37,8 +37,9 @@ def cadastrar():
     if confirmar_senha != senha:
         flash('Senhas digitadas não correspondem!')
         return redirect('/cadastro')
-    else: 
-        return redirect ('/')
+    else:
+        # A princípio, após finalizar o cadastro o usuário será redirecionado a página de Login.
+        return redirect ('/login')
 
 if __name__ == "__main__": 
     site.run(port = 8080, debug=True)
